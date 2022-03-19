@@ -34,7 +34,7 @@ services:
         volumes:
             - ./client:/app
         ports:
-            -   "8020:80"   #THIS IS FOR PRODUCTION PURPOSE
+            -   "80:80"   #THIS IS FOR PRODUCTION PURPOSE
         depends_on:
             - server
 
