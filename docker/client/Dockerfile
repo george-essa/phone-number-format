@@ -11,7 +11,7 @@ RUN npm install
 
 COPY ./client/ /app
 
-RUN npm run build --prod
+RUN npm run build
 
 
 
