@@ -41,6 +41,13 @@ Next, navigate in your terminal to the directory you cloned this project, and sp
 docker-compose up --build -d
 ```
 
+### Please note that if it will work on localhost ###
+change client/package.json 
+#### from ####
+"build": "ng build --prod",
+#### to ####
+"build": "ng build",
+
 Bringing up the docker compose network with site instead of just using up, ensure that only our site's containers are brought up at the start, instead of all of the command containers as well. the following are built for our web server, with their exposed ports detailed:
 
 - **webserver** : `:8080`
