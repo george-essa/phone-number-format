@@ -1,0 +1,89 @@
+<section class="py-5">
+<!----------------------------------------------------------------------------->
+<!-----------------------------START LOADER------------------------------------>
+<!----------------------------------------------------------------------------->
+  <ngx-ui-loader pbColor="#f68b1e" [fgsColor]="'#f68b1e'"></ngx-ui-loader>
+<!----------------------------------------------------------------------------->
+<!-------------------------------END LOADER------------------------------------>
+<!----------------------------------------------------------------------------->
+
+  <div class="container">
+    <h1 class="mb-5">Phone numbers</h1>
+
+<!----------------------------------------------------------------------------->
+<!-------------------------------START FILTER---------------------------------->
+<!----------------------------------------------------------------------------->
+    <div class="row" *ngIf="homeData.filters">
+      <div class="col-lg-6 mb-3">
+        <ng-select [items]="homeData.filters.countries"
+                   [bindLabel]="'Country'"
+                   [placeholder]="'Choose Country'"
+                   [(ngModel)]="homeData.selectedCountry"
+                   name="country"
+                   labelForId="country"
+                   (change)="getCustomers()">
+        </ng-select>
+      </div>
+
+      <div class="col-lg-6 mb-3">
+        <ng-select [items]="homeData.filters.state"
+                   [bindLabel]="'State'"
+                   [placeholder]="'Choose State'"
+                   [(ngModel)]="homeData.selectedState"
+                   name="state"
+                   labelForId="State"
+                   (change)="getCustomers()">
+        </ng-select>
+      </div>
+    </div>
+<!----------------------------------------------------------------------------->
+<!---------------------------------END FILTER---------------------------------->
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+<!---------------------------------START TABLE--------------------------------->
+<!----------------------------------------------------------------------------->
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Country</th>
+        <th scope="col">State</th>
+        <th scope="col">Country code</th>
+        <th scope="col">Phone number</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="homeData.countriesData">
+      <tr  *ngFor="let customer of homeData.countriesData.data; index as i">
+        <td>
+          {{ customer.country }}
+        </td>
+        <td>
+          {{ customer.state }}
+        </td>
+        <td>
+          {{ customer.code }}
+        </td>
+        <td>
+          {{ customer.phone }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+<!----------------------------------------------------------------------------->
+<!-----------------------------------END TABLE--------------------------------->
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+<!---------------------------------START PAGING-------------------------------->
+<!----------------------------------------------------------------------------->
+    <div class="d-flex justify-content-between p-2" *ngIf="homeData.countriesData">
+      <ngb-pagination
+        [collectionSize]="(homeData.countriesData.paginate.total)!" [(page)]="homeData.countriesData.paginate.current_page"
+        [pageSize]="homeData.countriesData.paginate.per_page" (pageChange)="getCustomers($event)">
+      </ngb-pagination>
+    </div>
+<!----------------------------------------------------------------------------->
+<!---------------------------------END PAGING-------------------------------->
+<!----------------------------------------------------------------------------->
+  </div>
+</section>

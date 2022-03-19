@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+    nginx:
+        platform: linux/x86_64
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./server:/var/www
+            - ./server/storage/server/public:/var/www/public/storage
+        depends_on:
+            - server
+
+    server:
+        platform: linux/x86_64
+        build:
+            context: .
+            dockerfile: ./docker/server/Dockerfile
+        volumes:
+            - ./server:/var/www
+            - ./server/storage/server/public:/var/www/public/storage
+        working_dir: /var/www
+        restart: always
+        privileged: true
+
+    client:
+        platform: linux/x86_64
+        build:
+            context: .
+            dockerfile: docker/client/Dockerfile
+        volumes:
+            - ./client:/app
+        ports:
+            -   "8020:80"   #THIS IS FOR PRODUCTION PURPOSE
+        depends_on:
+            - server
+

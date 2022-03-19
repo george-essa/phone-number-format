@@ -1,0 +1,14 @@
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+:root {
+  --jumia-primary-color: #f68b1e;
+}
+
+.ng-select.ng-select-focused .ng-select-container .ng-value-container .ng-placeholder{
+  color: var(--jumia-primary-color);
+}
+
+.ng-select.ng-select-focused .ng-select-container:after{
+  border-color: var(--jumia-primary-color);
+}
+

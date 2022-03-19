@@ -1,0 +1,16 @@
+/client/node_modules
+/server/public/storage
+/public/hot
+/public/uploads
+/public/upload
+/storage/*.key
+/server/vendor
+/.idea
+/.vscode
+/.phpintel
+.env
+npm-debug.log
+yarn-error.log
+sftp-config.json
+.DS_Store
+server/vendor/
