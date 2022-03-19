@@ -6,5 +6,6 @@ php artisan migrate
 php artisan cache:clear
 php artisan config:clear
 php artisan storage:link
+chmod -R 755 storage/
 #php artisan config:cache
 #exec "php-fpm"
